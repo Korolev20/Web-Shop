@@ -40,10 +40,10 @@ unitId(PK INTEGER NOT NULL)	unitName (TEXT(50) NOT NULL)
 Где
 - exbarBody – номер штрихкода;
 - packName – название товара;
-- packQuant – количество товара (зависит от packType, если packType = 0, то packQuant = 1 (товар штучный), если packType = 1, то packQuant = 1000 (товар весовой измеряется в граммах));
-- packType  = 0 или 1 (можно заменить на булево значение);
--packPrice - цена товара (в копейках)
--packBonus – скидка товара (в копейках)
+- packQuant – количество товара (packQuant = 1 (товар штучный),packQuant = 1000 (товар весовой измеряется в граммах));
+- packType  = 0(товар штучный) или 1 (товар весовой);
+-packPrice - цена товара (в копейках);
+-packBonus – скидка товара (в копейках);
 -unitName – название единицы измерения;
 
 
@@ -54,7 +54,7 @@ unitId(PK INTEGER NOT NULL)	unitName (TEXT(50) NOT NULL)
 -	exbarBody: TEXT(30) (null, null, null, штрихкод товара);
 -	packName:TEXT(50) (null, null, null, наименование товара);
 -	unitName:TEXT(50)(null, null, null, наименование единицы измерения);
--	price: INTEGER NOT NULL (цена всех товаров, сумма внесенная картой, сумма внесенная наличкой, либо сумма товара);
+-	price: INTEGER NOT NULL (цена всех товаров, сумма внесенная картой, сумма внесенная наличкой, сумма товара);
 -	bonusPrice: INTEGER  (скидка по всем товарам, null, null, скидка по товару)
 -	quantity: INTEGER  (null, null, null, количество товара, если товар весовой, то количество в граммах)
 
