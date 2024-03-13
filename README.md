@@ -70,9 +70,12 @@ unitId(PK INTEGER NOT NULL)	unitName (TEXT(50) NOT NULL)
 
 4. Работа с запросами Магазина Для выполнения запросов, нужно сначала зарегистрироваться, чтобы получить JWT токен, после ДОБАВЛЯТЬ в header: key – Authorization и value – Bearer {JWT токен} после чего можно выполнять запросы:
 
-4.1 Cписок всех Assortment (GET) - http://localhost:8080/api/findAll
+4.1 Cписок всех AssortmentDTO (GET) - http://localhost:8080/api/findAll
 
-4.2 Получение Product(GET) – http://localhost:8080/api/calculateProductPrice?exbarBody1=123123&quantity1=1&isDiscountProvided=true, Где : exbarBody1= 123123 или 321321 (существующие товары) quantity1 = 1 > 0 isDiscountProvided=true или false Обрабатывается исключение: quantity – измеряется в кг, если данный товар весовой. А если данный товар штучный – то мы не можем ввести дробное значение. И обрабатывается исключение, если exbarBody1 ввод несуществующего штриха. (not found)
+4.2 Получение ProductDTO(GET) – http://localhost:8080/api/calculateProductPrice?exbarBody1=123123&quantity1=1&isDiscountProvided=true, Где : exbarBody1= 123123 или 321321 (существующие товары) quantity1 = 1 > 0 isDiscountProvided=true или false Обрабатывается исключение: quantity – измеряется в кг, если данный товар весовой. А если данный товар штучный – то мы не можем ввести дробное значение. И обрабатывается исключение, если exbarBody1 ввод несуществующего штриха. (not found)
+
+
+POST запрос ПРОДАЖА, который в body принимает список ProductDTO, cashPrice (сумма, оплаченная наличкой, вводится в рублях), cardPrice (сумма, оплаченная картой, вводится в рублях). 
 
 4.3 Post запрос Продажа (Sales) - http://localhost:8080/api/sales Пример { "productDTOList": [ { "exbarBody": "32111", "packName": "Бонаква", "quantity1": 1, "totalPrice": 1.0, "bonusPrice": 0.20, "unitName": "шт", "packType": 0 }, { "exbarBody": "32111", "packName": "Бонаква", "quantity1": 1, "totalPrice": 2.0, "bonusPrice": 0.20, "unitName": "шт", "packType": 0 }, { "exbarBody": "32111", "packName": "Бонаква", "quantity1": 1, "totalPrice": 1.0, "bonusPrice": 0.20, "unitName": "шт", "packType": 0 } ], "cashPrice": 20, "cardPrice": 0.0 } Вывод: “Операция оплаты прошла успешно, сдача = 16.0 “(cashPrice + CardPrice(сумма клиента) – totalPrice суммы всех товаров). Если сумма клиента( напр. 3.0) будет меньше суммы товаров то будет сообщение “Операция не выполнена: задолженность = -1.0”. В Таблице, первые три строчки, дефолтные, там totalPrice и BonusPrice изменяются(суммируются) после выполнений запросов. В зависимости чем выполнялась оплата cashPrice cardPrice
 
@@ -82,4 +85,4 @@ SalesTag=3-сумма товаров, когда оплата и cashPrice и ca
 
 4.4 Удаление по дате и времени(Post) – http://localhost:8080/api/deleteByData/{salestime} Получится проверить, если посмотреть в таблице sales поле salestime. Нужно добавить %20 после даты. Пример: В БД: 2024-03-09 15:40:02.273925 Запроc http://localhost:8080/api/deleteByData/2024-03-09%2015:40:02.273925 Обработано исключение, если такого sales нету в БД, то будет исключение "message": "not found"
 
-Список использованных технологий: Spring Boot Maven Spring Security, JWT Hibernate, Spring Data Jpa Oracle ModelMapper
+Список использованных технологий: Spring Boot Maven Spring Security, JWT Hibernate, Spring Data Jpa, Oracle, ModelMapper
