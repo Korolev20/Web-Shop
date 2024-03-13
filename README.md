@@ -6,7 +6,7 @@ git clone https://github.com/Korolev20/Web-Shop.git (open Intellij Idea)
 spring.datasource.url=jdbc:oracle:thin:@localhost:1521/oracle
 spring.datasource.username= ‘Your Username’
 spring.datasource.password= ‘Your Password’
-Maven – MyWebProgr – lifecycle: -maven clean -maven package
+
 
 Примечание: Есть sql-файл, который лежит в папке sql в корне проекта (имя файла init.sql). Sql-файл содержит скрипты, которые надо использовать в oracle.Файл содержит создание таблиц, добавление строк (по два строчки в дефолтные таблицы, одну строчку для таблицы users и три дефолтных строчки для таблицы sales).
 
