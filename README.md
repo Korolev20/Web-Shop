@@ -10,7 +10,8 @@ Maven – MyWebProgr – lifecycle: -maven clean -maven package
 
 Примечание: Есть sql-файл, который лежит в папке sql в корне проекта (имя файла init.sql). Sql-файл содержит скрипты, которые надо использовать в oracle.Файл содержит создание таблиц, добавление строк (по два строчки в дефолтные таблицы, одну строчку для таблицы users и три дефолтных строчки для таблицы sales).
 
-БД
+Содержание БД:
+
 Таблица Users
 userId(PK INTEGER NOT NULL)	fistName (TEXT(50))	lastName (TEXT(50))	email (TEXT(50) NOT NULL)
 
@@ -25,6 +26,8 @@ packId (PK INTEGER NOT NULL)	packPrice (INTEGER NOT NULL)	packBonus(INTEGER NOT 
 
 Таблица UnitId
 unitId(PK INTEGER NOT NULL)	unitName (TEXT(50) NOT NULL)
+
+Где
 - exbarBody – номер штрихкода;
 - packName – название товара;
 - packQuant – количество товара (зависит от packType, если packType = 0, то packQuant = 1 (товар штучный), если packType = 1, то packQuant = 1000 (товар весовой измеряется в граммах));
