@@ -12,27 +12,27 @@ Maven – MyWebProgr – lifecycle: -maven clean -maven package
 
 Содержание БД:
 
-Таблица Users
+Таблица Users (Для регистрации и аутентификации)
 
 Поля:
 userId(PK INTEGER NOT NULL)	fistName (TEXT(50))	lastName (TEXT(50))	email (TEXT(50) NOT NULL)
 
-Таблица Exbarc
+Таблица Exbarc (Штрихкод товара)
 
 Поля:
 exbarcId (PK INTEGER NOR NULL)	packId (FK INTEGER NOT NULL)	exbarBody (TEXT(30) NOT NULL)
 
-Таблица Pack
+Таблица Pack (Товар)
 
 Поля:
 packId (PK INTEGER NOT NULL)	unitId (INTEGER NOT NULL)	packName (TEXT(50) NOT NULL)	packQuant (INTEGER NOT NULL)	packType (INTEGER NOT NULL)
 
-Таблица PackPrc
+Таблица PackPrc (Дополнительная информация по товару)
 
 Поля:
 packId (PK INTEGER NOT NULL)	packPrice (INTEGER NOT NULL)	packBonus(INTEGER NOT NULL)
 
-Таблица UnitId
+Таблица Unit (Единица измерения товара)
 
 Поля:
 unitId(PK INTEGER NOT NULL)	unitName (TEXT(50) NOT NULL)
@@ -47,14 +47,14 @@ unitId(PK INTEGER NOT NULL)	unitName (TEXT(50) NOT NULL)
 -unitName – название единицы измерения;
 
 
-Таблица Sales:
+Таблица Sales ("Продажи"):
 -	salesId: PK INTEGER NOT NULL;
 -	salesTime: DATETIME NOT NULL;
 -	salesTag: INTEGER NOT NULL (индефикатор таблицы salesTag = 3 – шапка, salesTag=2 – оплата картой, salesTag=1 – оплата наличкой, salesTag=0 - товары);
 -	exbarBody: TEXT(30) (null, null, null, штрихкод товара);
 -	packName:TEXT(50) (null, null, null, наименование товара);
 -	unitName:TEXT(50)(null, null, null, наименование единицы измерения);
--	price: INTEGER NOT NULL (цена всех товаров, либо сумма внесенная картой, либо сумма внесенная наличкой, либо сумма товара);
+-	price: INTEGER NOT NULL (цена всех товаров, сумма внесенная картой, сумма внесенная наличкой, либо сумма товара);
 -	bonusPrice: INTEGER  (скидка по всем товарам, null, null, скидка по товару)
 -	quantity: INTEGER  (null, null, null, количество товара, если товар весовой, то количество в граммах)
 
