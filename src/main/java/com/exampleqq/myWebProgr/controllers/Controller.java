@@ -6,9 +6,7 @@ import com.exampleqq.myWebProgr.dto.ProductDTO;
 import com.exampleqq.myWebProgr.exceptions.ErrorResponse;
 import com.exampleqq.myWebProgr.exceptions.NotCreatedException;
 import com.exampleqq.myWebProgr.exceptions.NotFoundException;
-import com.exampleqq.myWebProgr.models.Pack;
-import com.exampleqq.myWebProgr.models.PackPrc;
-import com.exampleqq.myWebProgr.models.Sales;
+
 import com.exampleqq.myWebProgr.service.AssortmentService;
 
 import com.exampleqq.myWebProgr.service.ProductService;

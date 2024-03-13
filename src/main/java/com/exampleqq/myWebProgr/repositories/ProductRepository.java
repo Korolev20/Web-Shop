@@ -22,7 +22,7 @@ public interface ProductRepository extends JpaRepository<Exbarc, Integer> {
             "FROM Exbarc e " +
             "JOIN Pack p ON e.packId = p.packId " +
             "JOIN PackPrc pp ON p.packId = pp.packId" +
-            "JOIN Unit u ON p.unitId = u.unit_id " +
+            " JOIN Unit u ON p.unitId = u.unit_id " +
             "WHERE pp.packPrice > :priceThreshold AND pp.packBonus > :bonusThreshold",nativeQuery = true)
     List<Object []> findSalesWithTotalPriceGreaterThan(@Param("priceThreshold") BigDecimal priceThreshold,@Param("bonusThreshold") BigDecimal bonusThreshold);
 }
