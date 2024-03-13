@@ -13,28 +13,28 @@ Maven – MyWebProgr – lifecycle: -maven clean -maven package
 Содержание БД:
 
 Таблица Users
-Поля:
 
+Поля:
 userId(PK INTEGER NOT NULL)	fistName (TEXT(50))	lastName (TEXT(50))	email (TEXT(50) NOT NULL)
 
 Таблица Exbarc
-Поля:
 
+Поля:
 exbarcId (PK INTEGER NOR NULL)	packId (FK INTEGER NOT NULL)	exbarBody (TEXT(30) NOT NULL)
 
 Таблица Pack
-Поля:
 
+Поля:
 packId (PK INTEGER NOT NULL)	unitId (INTEGER NOT NULL)	packName (TEXT(50) NOT NULL)	packQuant (INTEGER NOT NULL)	packType (INTEGER NOT NULL)
 
 Таблица PackPrc
-Поля:
 
+Поля:
 packId (PK INTEGER NOT NULL)	packPrice (INTEGER NOT NULL)	packBonus(INTEGER NOT NULL)
 
 Таблица UnitId
-Поля:
 
+Поля:
 unitId(PK INTEGER NOT NULL)	unitName (TEXT(50) NOT NULL)
 
 Где
