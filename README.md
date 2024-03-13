@@ -81,4 +81,4 @@ SalesTag=3-сумма товаров, когда оплата и cashPrice и ca
 
 4.4 Удаление по дате и времени(Post) – http://localhost:8080/api/deleteByData/{salestime} Получится проверить, если посмотреть в таблице sales поле salestime. Нужно добавить %20 после даты. Пример: В БД: 2024-03-09 15:40:02.273925 Запроc http://localhost:8080/api/deleteByData/2024-03-09%2015:40:02.273925 Обработано исключение, если такого sales нету в БД, то будет исключение "message": "not found"
 
-Список использованных технологий: Spring Boot Maven Spring Security, JWT Hibernate, Spring Data Jpa PostgreSQL ModelMapper
+Список использованных технологий: Spring Boot Maven Spring Security, JWT Hibernate, Spring Data Jpa Oracle ModelMapper
