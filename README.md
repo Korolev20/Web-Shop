@@ -37,6 +37,18 @@ unitId(PK INTEGER NOT NULL)	unitName (TEXT(50) NOT NULL)
 -unitName – название единицы измерения;
 
 
+Таблица Sales:
+-	salesId: PK INTEGER NOT NULL;
+-	salesTime: DATETIME NOT NULL;
+-	salesTag: INTEGER NOT NULL (индефикатор таблицы salesTag = 3 – шапка, salesTag=2 – оплата картой, salesTag=1 – оплата наличкой, salesTag=0 - товары);
+-	exbarBody: TEXT(30) (null, null, null, штрихкод товара);
+-	packName:TEXT(50) (null, null, null, наименование товара);
+-	unitName:TEXT(50)(null, null, null, наименование единицы измерения);
+-	price: INTEGER NOT NULL (цена всех товаров, либо сумма внесенная картой, либо сумма внесенная наличкой, либо сумма товара);
+-	bonusPrice: INTEGER  (скидка по всем товарам, null, null, скидка по товару)
+-	quantity: INTEGER  (null, null, null, количество товара, если товар весовой, то количество в граммах)
+
+
 Запросы в Postman:
 
 1. Регистрация http://localhost:8080/auth/registration Post-запрос: { "fistname":"…", - необязательное "lastname":"…", - необязательное "email ":"…", "password":"" } Если такой email уже имеется в БД или(и) пароль указан неверно, то – {"message": " There is already a human with the same email or not correct password"}. При успешной регистрации, в БД добавляется email и зашифрованный пароль от BCryptPasswordEncoder и создается JWT токен на основе email и возвращается клиенту. Токен действителен 1 месяц.
