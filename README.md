@@ -1,6 +1,6 @@
 Запуск.
 
-1) git clone https://github.com/Korolev20/Web-Shop.git (open Intellij Idea)
+git clone https://github.com/Korolev20/Web-Shop.git (open Intellij Idea)
 В файле application.properties должно быть:
 
 spring.datasource.url=jdbc:oracle:thin:@localhost:1521/oracle
@@ -10,9 +10,9 @@ Maven – MyWebProgr – lifecycle: -maven clean -maven package
 
 Примечание: Есть sql-файл, который лежит в папке sql в корне проекта (имя файла init.sql). Sql-файл создает все таблицы и добавляет по два строчки в дефолтные таблицы, одну строчку для таблицы users и три дефолтных строчки для таблицы sales.
 
-2) Запросы в Postman:
-2.1) Регистрация http://localhost:8080/auth/registration Post-запрос: { "fistname":"…", - необязательное "lastname":"…", - необязательное "email ":"…", "password":"" } Если такой email уже имеется в БД или(и) пароль указан неверно, то – {"message": " There is already a human with the same email or not correct password"}. При успешной регистрации, в БД добавляется email и зашифрованный пароль от BCryptPasswordEncoder и создается JWT токен на основе email и возвращается клиенту. Токен действителен 1 месяц.
-2.2)  Аутентификация http://localhost:8080/auth/login Можно залогиниться используя email и password для существующего пользователя: POST – запрос: { "email":"oskar@mail.ru", "password":"1234" } Или зарегистрироваться и потом ввести данные. Если email и password совпадают, то создается новый токен и возвращается клиенту.
+Запросы в Postman:
+Регистрация http://localhost:8080/auth/registration Post-запрос: { "fistname":"…", - необязательное "lastname":"…", - необязательное "email ":"…", "password":"" } Если такой email уже имеется в БД или(и) пароль указан неверно, то – {"message": " There is already a human with the same email or not correct password"}. При успешной регистрации, в БД добавляется email и зашифрованный пароль от BCryptPasswordEncoder и создается JWT токен на основе email и возвращается клиенту. Токен действителен 1 месяц.
+Аутентификация http://localhost:8080/auth/login Можно залогиниться используя email и password для существующего пользователя: POST – запрос: { "email":"oskar@mail.ru", "password":"1234" } Или зарегистрироваться и потом ввести данные. Если email и password совпадают, то создается новый токен и возвращается клиенту.
 Удаление пользователя по id Post-запрос http://localhost:8080/auth/deleteUserById/{id} Если ввести id несуществующего пользователя, то вернется not found
 
 4)Работа с запросами Магазина Для выполнения запросов, нужно сначала зарегистрироваться, чтобы получить JWT токен, после ДОБАВЛЯТЬ в header: key – Authorization и value – Bearer {JWT токен} после чего можно выполнять запросы:
