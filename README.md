@@ -46,6 +46,7 @@ unitId(PK INTEGER NOT NULL)	unitName (TEXT(50) NOT NULL)
 -packBonus – скидка товара (в копейках);
 -unitName – название единицы измерения;
 
+В Таблице, первые три строчки, дефолтные, там totalPrice и BonusPrice изменяются(суммируются) после выполнений запросов. В зависимости чем выполнялась оплата cashPrice,cardPrice.
 
 Таблица Sales ("Продажи"):
 -	salesId: PK INTEGER NOT NULL;
