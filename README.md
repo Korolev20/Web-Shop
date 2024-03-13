@@ -10,6 +10,30 @@ Maven – MyWebProgr – lifecycle: -maven clean -maven package
 
 Примечание: Есть sql-файл, который лежит в папке sql в корне проекта (имя файла init.sql). Sql-файл создает все таблицы и добавляет по два строчки в дефолтные таблицы, одну строчку для таблицы users и три дефолтных строчки для таблицы sales.
 
+БД
+Таблица Users
+userId(PK INTEGER NOT NULL)	fistName (TEXT(50))	lastName (TEXT(50))	email (TEXT(50) NOT NULL)
+
+Таблица Exbarc
+exbarcId (PK INTEGER NOR NULL)	packId (FK INTEGER NOT NULL)	exbarBody (TEXT(30) NOT NULL)
+
+Таблица Pack
+packId (PK INTEGER NOT NULL)	unitId (INTEGER NOT NULL)	packName (TEXT(50) NOT NULL)	packQuant (INTEGER NOT NULL)	packType (INTEGER NOT NULL)
+
+Таблица PackPrc
+packId (PK INTEGER NOT NULL)	packPrice (INTEGER NOT NULL)	packBonus(INTEGER NOT NULL)
+
+Таблица UnitId
+unitId(PK INTEGER NOT NULL)	unitName (TEXT(50) NOT NULL)
+- exbarBody – номер штрихкода;
+- packName – название товара;
+- packQuant – количество товара (зависит от packType, если packType = 0, то packQuant = 1 (товар штучный), если packType = 1, то packQuant = 1000 (товар весовой измеряется в граммах));
+- packType  = 0 или 1 (можно заменить на булево значение);
+-packPrice - цена товара (в копейках)
+-packBonus – скидка товара (в копейках)
+-unitName – название единицы измерения;
+
+
 Запросы в Postman:
 
 1. Регистрация http://localhost:8080/auth/registration Post-запрос: { "fistname":"…", - необязательное "lastname":"…", - необязательное "email ":"…", "password":"" } Если такой email уже имеется в БД или(и) пароль указан неверно, то – {"message": " There is already a human with the same email or not correct password"}. При успешной регистрации, в БД добавляется email и зашифрованный пароль от BCryptPasswordEncoder и создается JWT токен на основе email и возвращается клиенту. Токен действителен 1 месяц.
